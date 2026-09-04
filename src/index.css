@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 font-sans antialiased;
+}
+
+@layer components {
+  .kiosk-shell {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .btn-kiosk {
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-6 text-kiosk-btn font-semibold transition-all duration-200 active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300;
+  }
+  .btn-kiosk-primary {
+    @apply btn-kiosk bg-primary-500 text-white shadow-kiosk hover:bg-primary-600;
+  }
+  .btn-kiosk-secondary {
+    @apply btn-kiosk bg-white text-primary-700 border-2 border-primary-200 hover:border-primary-400 hover:bg-primary-50;
+  }
+  .btn-kiosk-ghost {
+    @apply btn-kiosk bg-transparent text-ink-600 hover:bg-ink-100;
+  }
+
+  .card-kiosk {
+    @apply rounded-3xl bg-white shadow-card border border-ink-100;
+  }
+
+  .staff-nav-link {
+    @apply flex items-center gap-2.5 px-3.5 py-2 rounded-lg text-sm font-medium text-ink-600 hover:bg-ink-100 hover:text-ink-900 transition-colors;
+  }
+  .staff-nav-link-active {
+    @apply bg-primary-50 text-primary-700 hover:bg-primary-50 hover:text-primary-700;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
