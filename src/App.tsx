@@ -4,9 +4,10 @@ import { PatientFlow } from '@/flows/patient/PatientFlow';
 import { NurseDashboard } from '@/flows/nurse/NurseDashboard';
 import { PhysicianDashboard } from '@/flows/physician/PhysicianDashboard';
 import { AdminDashboard } from '@/flows/admin/AdminDashboard';
-import { Monitor, Stethoscope, Activity, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Monitor, Stethoscope, Activity, ShieldCheck, ScanLine, ArrowRight } from 'lucide-react';
+import { OCRFlow } from '@/flows/ocr/OCRFlow';
 
-type Workspace = 'launcher' | 'patient' | 'nurse' | 'physician' | 'admin';
+type Workspace = 'launcher' | 'patient' | 'nurse' | 'physician' | 'admin' | 'ocr';
 
 function Launcher({ onSelect }: { onSelect: (w: Workspace) => void }) {
   const roles: { key: Workspace; label: string; desc: string; icon: typeof Monitor; color: string }[] = [
@@ -14,6 +15,7 @@ function Launcher({ onSelect }: { onSelect: (w: Workspace) => void }) {
     { key: 'nurse', label: 'Nurse Station', desc: 'Triage alerts & red-flag escalation', icon: Activity, color: 'bg-danger-500' },
     { key: 'physician', label: 'Physician', desc: 'Clinical review workspace', icon: Stethoscope, color: 'bg-success-500' },
     { key: 'admin', label: 'Admin Console', desc: 'Enterprise administration', icon: ShieldCheck, color: 'bg-ink-800' },
+    { key: 'ocr', label: 'MediScan OCR', desc: 'Upload document & AI extracts details', icon: ScanLine, color: 'bg-accent-500' },
   ];
 
   return (
@@ -67,6 +69,7 @@ function AppInner() {
   if (workspace === 'nurse') return <NurseDashboard onExit={() => setWorkspace('launcher')} />;
   if (workspace === 'physician') return <PhysicianDashboard onExit={() => setWorkspace('launcher')} />;
   if (workspace === 'admin') return <AdminDashboard onExit={() => setWorkspace('launcher')} />;
+  if (workspace === 'ocr') return <OCRFlow onExit={() => setWorkspace('launcher')} />;
   return <Launcher onSelect={setWorkspace} />;
 }
 
