@@ -63,7 +63,7 @@ function AppInner() {
   const [workspace, setWorkspace] = useState<Workspace>('launcher');
 
   if (workspace === 'launcher') return <Launcher onSelect={setWorkspace} />;
-  if (workspace === 'patient') return <PatientFlow />;
+  if (workspace === 'patient') return <PatientFlow onExit={() => setWorkspace('launcher')} />;
   if (workspace === 'nurse') return <NurseDashboard onExit={() => setWorkspace('launcher')} />;
   if (workspace === 'physician') return <PhysicianDashboard onExit={() => setWorkspace('launcher')} />;
   if (workspace === 'admin') return <AdminDashboard onExit={() => setWorkspace('launcher')} />;

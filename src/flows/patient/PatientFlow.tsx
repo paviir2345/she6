@@ -22,7 +22,6 @@ import { CoachMark } from '@/components/CoachMark';
 import { useSpeech } from '@/hooks/useSpeech';
 import { useSpeechRecognition } from '@/hooks/useSpeechRecognition';
 import { INTERVIEW_QUESTIONS, type InterviewQuestion } from '@/data/interview';
-import { mcp__pexels__pexels_search } from '@/tools';
 
 type Screen =
   | 'landing' | 'welcome' | 'language' | 'patient-caregiver' | 'relationship'
